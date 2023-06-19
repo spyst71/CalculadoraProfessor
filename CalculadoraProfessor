@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class CalculadoraSalarioProfessor {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicitar o nome do professor
+        System.out.print("Digite o nome do professor: ");
+        String nome = scanner.nextLine();
+
+        // Solicitar o regime de pagamento
+        System.out.print("Digite o regime de pagamento (CLT, Horista ou PJ): ");
+        String regime = scanner.nextLine();
+
+        double valorAReceber = 0.0;
+
+        if (regime.equalsIgnoreCase("CLT")) {
+            // Solicitar o salário mensal
+            System.out.print("Digite o salário mensal do professor: ");
+            double salarioMensal = scanner.nextDouble();
+            valorAReceber = salarioMensal;
+        } else if (regime.equalsIgnoreCase("Horista")) {
+            // Solicitar o número de horas trabalhadas
+            System.out.print("Digite o número de horas trabalhadas pelo professor: ");
+            int horasTrabalhadas = scanner.nextInt();
+
+            // Solicitar o valor da hora de trabalho
+            System.out.print("Digite o valor da hora de trabalho: ");
+            double valorHoraTrabalho = scanner.nextDouble();
+
+            valorAReceber = horasTrabalhadas * valorHoraTrabalho;
+        } else if (regime.equalsIgnoreCase("PJ")) {
+            // Solicitar o valor do contrato
+            System.out.print("Digite o valor do contrato do professor: ");
+            double valorContrato = scanner.nextDouble();
+            valorAReceber = valorContrato;
+        } else {
+            System.out.println("Regime de pagamento inválido.");
+            System.exit(0);
+        }
+
+        // Imprimir o resultado
+        System.out.println("Nome do professor: " + nome);
+        System.out.println("Valor a receber: " + valorAReceber);
+    }
+}
